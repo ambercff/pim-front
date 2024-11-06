@@ -1,32 +1,26 @@
+import axios from 'axios';
 import { create } from 'zustand';
 
 interface UtilsState {
-    isTokenExpired: () => boolean;
+    setUpTokenExpirationInterceptor: () => void;
 }
 
-const useUtilsStore = create<UtilsState>((set) => ({
-    isTokenExpired: () => {
-        const token = localStorage.getItem('token');
-
-        if(!token){
-            return true;
-        }
-
-        const currentTime = Date.now();
-        const expiresAtString = localStorage.getItem('expires_at');
-
-        if(expiresAtString !== null){
-            const expiresAt = new Date(expiresAtString).getTime();
-            const isExpired = currentTime > expiresAt;
-
-            if(isExpired){
-                localStorage.clear();
-                document.cookie = "SESSION" + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Tirar o cookie da sessão
+const useUtilsStore = create<UtilsState>(() => ({
+    setUpTokenExpirationInterceptor: () => {
+        axios.interceptors.response.use(
+            response => response,
+            error => {
+                if (error.response && error.response.status === 401) {
+                    // Limpa o token e dados do localStorage
+                    localStorage.clear();
+                    document.cookie = 'SESSION=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                    window.location.href = '/'; // Redireciona para a página de login
+                }
+                return Promise.reject(error);
             }
-            return isExpired;
-        }
-        return true;
-    }
+        );
+    },
+        
 }));
 
 export default useUtilsStore;

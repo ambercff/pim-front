@@ -41,10 +41,9 @@ hr {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 90%;
     justify-content: center;
-    margin-left: 5%;
     text-align: center;
+    width: 100%;
 }
 
 .linha_vertical_transparente {
@@ -55,6 +54,7 @@ hr {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
 }
 
 .linha_vertical {
@@ -65,6 +65,7 @@ hr {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
 }
 
 .vagas {
@@ -77,7 +78,8 @@ hr {
 
 
 .vaga {
-    width: 70%;
+    width: 100%;
+    padding: 2rem;
     height: 10em;
     margin-top: 15px;
     border: none;

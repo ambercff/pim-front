@@ -1,4 +1,4 @@
-import Routers from "./Routers";
+import Routers from "./routes/Routers";
 
 export default function App() {
     return (
@@ -6,14 +6,3 @@ export default function App() {
     );
 }
 
-
-// import Routers from './Routers'
-// import './index.css'
-
-// function App() {
-//   return (
-//     <Routers/>
-//   )
-// }
-
-// export default App;

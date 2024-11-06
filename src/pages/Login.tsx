@@ -4,8 +4,10 @@ import easyParkLogo from "../assets/imgs/easyParkLogo.svg";
 export function Login(){
     return(
         <div className='container'>
-        <div className='navbar'>
-            <img className='imgBoschEP' src={easyParkLogo} alt="easyParkLogo" />
+                <div className='navbar'>
+            <div className="img-header">
+                <img className='imgBoschEP' src={easyParkLogo} alt="easyParkLogo" />
+            </div>
         </div>
                <FormLogin/>
         </div>

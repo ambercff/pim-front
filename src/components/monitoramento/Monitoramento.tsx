@@ -34,7 +34,7 @@ export function Monitoramento() {
             }
         };
         fetchData();
-        const intervalId = setInterval(fetchData, 5000);
+        const intervalId = setInterval(fetchData, 1000);
 
         return () => clearInterval(intervalId);
     }, []);
@@ -58,22 +58,22 @@ export function Monitoramento() {
                     <div className={styles.vagas_container}>
                         <hr />
                     </div>
-                    <div className={styles.grid_linhas}>
-                        {vagas.map((vaga, index) => (
-                            <div
-                                className={index === 0 ? styles.linha_vertical_transparente : styles.linha_vertical}
-                                key={vaga.numeroVaga}
-                            >
-                                <div className={styles.vaga_container}>
-                                    <button
-                                        onClick={() => handleInformationsData(vaga.numeroVaga)}
-                                        className={`${vaga.statusVaga === 'STATUS_OCUPADO' ? styles.occupied : ''} ${styles.vaga}`}
-                                    ></button>
-                                    <p className={styles.vaga_marcacao}>{`Vaga ${vaga.numeroVaga}`}</p>
+                        <div className={styles.grid_linhas}>
+                            {vagas.map((vaga, index) => (
+                                <div
+                                    className={index === 0 ? styles.linha_vertical_transparente : styles.linha_vertical}
+                                    key={vaga.numeroVaga}
+                                >
+                                    <div className={styles.vaga_container}>
+                                        <button
+                                            onClick={() => handleInformationsData(vaga.numeroVaga)}
+                                            className={`${vaga.statusVaga === 'STATUS_OCUPADO' ? styles.occupied : ''} ${styles.vaga}`}
+                                        ></button>
+                                        <p className={styles.vaga_marcacao}>{`Vaga ${vaga.numeroVaga}`}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
                     <Modal
                         isOpen={openModal}
                         onClose={() => setOpenModal(false)}

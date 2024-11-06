@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LogoIMG from '../../assets/imgs/easyParkLogo.svg';
 import './StylesFormLogin.css';
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,12 @@ export function FormLogin() {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if (localStorage.getItem("token")) {
+            navigate("/home");
+        }
+    }, [navigate]);
+    
     const handleClick = async (e: { preventDefault: () => void; }) => {
         e.preventDefault(); 
         await login(email, password);

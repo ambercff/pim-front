@@ -1,5 +1,4 @@
 .container {
-    background-color: #F3F3F3;
     height: 40vh;
     justify-content: center;
     align-items: center;
@@ -8,8 +7,9 @@
 .container_title {
     text-align: center;
     font-family: sans-serif;
-    font-size: 50px;
-    padding: 50px;
+    font-size: 3rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 
 .containers_status {
@@ -67,4 +67,14 @@
 
 .green {
     color: rgb(0, 235, 0);
+}
+
+@media (max-width: 915px){
+    .container_title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 680px){
+
 }
