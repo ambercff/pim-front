@@ -1,0 +1,105 @@
+.container {
+    display: flex;
+    background-color: #f3f3f3;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content {
+    width: 65%;
+    box-shadow: 0px 2px 10px rgba(128, 128, 128, 0.2);
+    background-color: white;
+    height: 400px;
+    margin-top: 40px;
+}
+
+.title {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    justify-content: center;
+    text-align: center;
+    font-size: 28px;
+}
+
+.vagas_container {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin-top: 70px;
+    align-items: center;
+    justify-content: center;
+}
+
+hr {
+    width: 90%;
+}
+
+.grid_linhas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.linha_vertical_transparente {
+    display: flex;
+    height: 12em;
+    border-left: 1.5px solid;
+    border-color: transparent;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.linha_vertical {
+    display: flex;
+    height: 12em;
+    border-left: 1.5px solid;
+    border-color: rgb(147, 147, 147);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.vagas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.vaga {
+    width: 100%;
+    padding: 2rem;
+    height: 10em;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: #B0FFBD;
+}
+
+.vaga:hover {
+    transform: scale(1.08);
+}
+
+.occupied {
+    background-color: #FF9F9F;
+}
+
+.vaga_marcacao {
+    margin-top: 16%;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: rgb(148, 148, 148);
+    font-size: 14px;
+}

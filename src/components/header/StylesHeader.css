@@ -1,0 +1,65 @@
+
+.navbar {
+    display: flex;
+    background-color: white;
+    height: 5rem;
+    width: 100%;
+    border-bottom: 5px solid #2B4743;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px 0px rgba(61, 61, 61, 0.2);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-logout {
+    width: 120px;
+    margin-right: 10rem;
+}
+
+.btn-logout {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #2B4743;
+    border: none;
+    padding: .5rem;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.btn-logout:hover{
+    transform: scale(1.08);
+    cursor: pointer;
+}
+.imgBoschEP {
+    width: 100%;
+    margin-left: 10rem;
+}
+
+.icon-logout, .nav-text {
+    font-size: 1rem;
+}
+.img-header {
+    width: 200px;
+}
+@media (max-width: 915px){
+    .img-header {
+        width: 150px;
+    }
+    .container-logout {
+        width: 80px;
+    }
+    .icon-logout, .nav-text {
+        font-size: 12px;
+    }
+    .btn-logout{
+        gap: .5rem;
+    }
+}
+
+@media (max-width: 680px){
+
+}

@@ -1,0 +1,64 @@
+.background {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(0,0,0,0.7);
+    z-index: 1000;
+}
+
+.modal_container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25rem;
+    height: 15rem;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.modal_content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.info_ocupante {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-weight: bolder;
+    font-size: 25px;
+    margin-bottom: 25px
+}
+
+.modal_status_vaga {
+    color: rgb(255, 75, 75);
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+.name_occupant_content {
+    font-size: 17px;
+    margin-top: 7px;
+}
+
+.place_number_content {
+    margin-top: 7px;
+}
+
+.place_number {
+    font-weight: bold;
+}
+
+.name {
+    font-weight: bold;
+}

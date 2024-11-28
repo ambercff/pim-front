@@ -1,0 +1,31 @@
+.general_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.general_container h1 {
+    margin-top: 40px;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #000;
+    text-align: center;
+    padding: 10px;
+}
+
+th {
+    background-color: #2B4743;
+    color: #fff;
+}
+
+td {
+    background-color: #fff;
+}
