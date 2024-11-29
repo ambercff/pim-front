@@ -3,9 +3,8 @@ import Swal from 'sweetalert2'
 import { API_BASE_URL } from "./config";
 
 
-const token = localStorage.getItem("token");
-
 export const fetchVagas = async () => {
+    const token = localStorage.getItem("token")
     try {
         const response = await axios.get(`${API_BASE_URL}/vagas`, {
             headers: {
@@ -35,6 +34,7 @@ export const login = async (login: string, password: string) => {
 };
 
 export const logout = async () => {
+    const token = localStorage.getItem("token")
     try {
         await axios.post(`${API_BASE_URL}/users/logout`, {}, {
             headers: {
@@ -48,6 +48,7 @@ export const logout = async () => {
 };
 
 export const fetchInformationsData = async (numeroVaga: number) => {
+    const token = localStorage.getItem("token")
     try {
         const response = await axios.get(`${API_BASE_URL}/vagas/${numeroVaga}/veiculo-atual`, {
             headers:{
@@ -68,6 +69,7 @@ export const fetchInformationsData = async (numeroVaga: number) => {
 };
 
 export const fetchEntradasSaidas = async () => {
+    const token = localStorage.getItem("token")
     try {
         const response = await axios.get(`${API_BASE_URL}/entradaSaida`, {
             headers: {
@@ -80,4 +82,26 @@ export const fetchEntradasSaidas = async () => {
     } catch (error) {
         console.log(`Erro: ${error}`);
     }
+};
+
+export const isTokenExpired = () => {
+    const token = localStorage.getItem("token")
+    if(!token){
+        return true;
+    }
+
+    const currentTime = Date.now();
+    const expiresAtString = localStorage.getItem("expires_at");
+
+    if (expiresAtString !== null){
+        const expiresAt = new Date(expiresAtString).getTime();
+        const isExpired = currentTime > expiresAt;
+
+        if (isExpired) {
+            localStorage.clear();
+            document.cookie = "SESSION" + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Tirar o cookie da sessão
+        }
+        return isExpired;
+    }
+    return true;
 }

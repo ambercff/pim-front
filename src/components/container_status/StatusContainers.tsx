@@ -13,7 +13,7 @@ export function StatusContainers(){
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetchVagas();
-            
+
             if (response) { 
                 const vagas = response.data as Vaga[];
                 const ocupadas = vagas.filter(vaga => vaga.statusVaga === "STATUS_OCUPADO").length;
@@ -21,13 +21,13 @@ export function StatusContainers(){
     
                 setVagasOcupadas(ocupadas);
                 setVagasLivres(livres);
+
             } else {
                 console.error("Não foi possível carregar as vagas.");
             }
         };
     
         fetchData();
-
         const intervalId = setInterval(fetchData, 1000);
 
         return () => clearInterval(intervalId);

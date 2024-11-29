@@ -2,6 +2,7 @@ import styles from './Monitoramento.module.css';
 import { Modal } from '../modal/Modal';
 import { useEffect, useState } from 'react';
 import { fetchInformationsData, fetchVagas } from '../../api/api';
+import Swal from 'sweetalert2';
 
 export interface Vaga {
     numeroVaga: number; // Alterado para 'number'
@@ -45,13 +46,21 @@ export function Monitoramento() {
     }, []);
 
 
-    const handleInformationsData = async (numeroVaga: number) => {
+    const handleInformationsData = async (numeroVaga: number, statusVaga: string) => {
+        if (statusVaga !== 'STATUS_OCUPADO') {
+            Swal.fire({
+                title: 'Nenhum carro na vaga!',
+                text: "A vaga precisa estar ocupada para que tenha informações disponíveis",
+                icon: "error"
+              });
+        }
+    
         const response = await fetchInformationsData(numeroVaga);
-        if(response){
+        if (response) {
             setInformationsData(response.data);
             setOpenModal(true);
         }
-    }
+    };
 
     return (
         <>
@@ -72,7 +81,7 @@ export function Monitoramento() {
                                 >
                                     <div className={styles.vaga_container}>
                                         <button
-                                            onClick={() => handleInformationsData(vaga.numeroVaga)}
+                                            onClick={() => handleInformationsData(vaga.numeroVaga, vaga.statusVaga)}
                                             className={`${vaga.statusVaga === 'STATUS_OCUPADO' ? styles.occupied : ''} ${styles.vaga}`}
                                         ></button>
                                         <p className={styles.vaga_marcacao}>{`Vaga ${vaga.numeroVaga}`}</p>
