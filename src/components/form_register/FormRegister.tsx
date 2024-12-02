@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import LogoIMG from '../../assets/imgs/easyParkLogo.svg';
-import './StylesFormLogin.css';
+import './StylesFormRegister.css';
 import { useNavigate } from "react-router-dom";
-import { login } from "../../api/api";
+import { register } from "../../api/api";
 
-export function FormLogin() {
+export function FormRegister() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -17,8 +18,8 @@ export function FormLogin() {
     
     const handleClick = async (e: { preventDefault: () => void; }) => {
         e.preventDefault(); 
-        await login(email, password);
-        navigate("/home");
+        await register(email, password, name);
+        navigate("/");
     };
 
     return (
@@ -30,7 +31,16 @@ export function FormLogin() {
                     </span>
                     <span className="login-form-title">Bem-Vindo!</span>
                     <div className="login-form-subtitle">
-                        <span className="text-subtitle1">Entre em nosso <strong>estacionamento</strong></span>
+                        <span className="text-subtitle1">Cadastre-se em nosso <strong>estacionamento</strong></span>
+                    </div>
+                    <div className="wrap-input">
+                        <input
+                            className={name !== "" ? 'has-val input' : 'input'}
+                            type="text"
+                            value={name}
+                            onChange={e => setName(e.target.value)}
+                        />
+                        <span className="focus-input" data-placeholder='Nome Completo:'></span>
                     </div>
                     <div className="wrap-input">
                         <input
@@ -51,10 +61,7 @@ export function FormLogin() {
                         <span className="focus-input" data-placeholder='Senha:'></span>
                     </div>
                     <div className="container-login-form-btn">
-                        <button onClick={handleClick} className="login-form-btn" >Entrar</button>
-                    </div>
-                    <div className='container-text-register'>
-                        <p> Ainda não tem uma conta? </p> <a href="/register"> cadastre-se </a>
+                        <button onClick={handleClick} className="login-form-btn" >Cadastrar</button>
                     </div>
                 </form>
             </div>

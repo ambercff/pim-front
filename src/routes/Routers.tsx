@@ -3,12 +3,14 @@ import { Login } from '../pages/Login';
 import { Home } from '../pages/Home';
 import PrivateRoute from './PrivateRoute';
 import { EntradasSaidas } from '../pages/EntradasSaidas';
+import { Register } from '../pages/Register';
 
 function Routers() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Login />} />
+                <Route path='/register' element={<Register />} />
                 <Route
                     path='/home'
                     element={

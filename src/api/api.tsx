@@ -2,7 +2,6 @@ import axios from "axios";
 import Swal from 'sweetalert2'
 import { API_BASE_URL } from "./config";
 
-
 export const fetchVagas = async () => {
     const token = localStorage.getItem("token")
     try {
@@ -29,6 +28,19 @@ export const login = async (login: string, password: string) => {
         localStorage.setItem("expires_at", response.data.expiresAt);
     } catch (error) {
         console.error("Erro ao fazer login!", error);
+        throw error;
+    }
+};
+
+export const register = async (login: string, password: string, name: string) => {
+    try {
+        await axios.post(`${API_BASE_URL}/users/register`, {
+            login: login,
+            senha: password,
+            nome: name
+        });
+    } catch (error) {
+        console.error("Erro ao fazer cadastro!", error);
         throw error;
     }
 };
